@@ -8,15 +8,12 @@ def passgen(x, y):
   
   arrpass = []
 
-  pwd = ''
-  for i in np.arange(x):
-    #less effitient O^2
-    for c in np.arange(y): 
-      pwd += random.choice(poss)
+  for i in range(x):
+    #pwd = ''
+    temp = random.sample(poss,y)
+    pwd = ''.join(temp)
     arrpass.append(pwd)
   return arrpass
-  #for l in arrpass: return l
-
 
 num_pass = int(input('Number of passwords: '))
 length =int(input('Password length: '))
