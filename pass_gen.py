@@ -1,22 +1,26 @@
-import random, string, numpy as np
+import random, string
 
-def passgen(x, y):
-  letters = string.ascii_letters # string a-z ans A-Z
-  numb = string.digits #0-9
-  sim = string.punctuation #!”#$%&'()*+,-./:;<=>?@[]^_`{|}~
-  poss = letters + numb + sim
+def passgen(x, y,poss):
+
+  arrpass = set()
   
-  arrpass = []
-
-  for i in range(x):
-    #pwd = ''
+  for _ in range(x):
     temp = random.sample(poss,y)
     pwd = ''.join(temp)
-    arrpass.append(pwd)
+    arrpass.add(pwd)
+  
   return arrpass
 
+def chact():
+  letters = string.ascii_letters + u'\u00F1' + u'\u00D1'
+  numb = string.digits 
+  sim = string.punctuation 
+  poss = letters + numb + sim
+  return poss
+  
 num_pass = int(input('Number of passwords: '))
 length =int(input('Password length: '))
 print()
 
-print(passgen(num_pass,length))
+record = passgen(num_pass,length,chact())
+print(record)
